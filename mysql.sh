@@ -47,11 +47,11 @@ VALIDATE $? "Enabling MySQL"
 systemctl start mysqld &>>$LOG_FILE
 VALIDATE $? "Starting MySQL"
 
-#MYSQL_ROOT_PASSWORD:RoboShop@1
+#root-pass:RoboShop@1
 mysql_secure_installation --set-root-pass $MYSQL_ROOT_PASSWORD &>>$LOG_FILE
 VALIDATE $? "Setting MySQL root password"
 
 END_TIME=$(date +%s)
-TOTAL_TIME=$(( $END_TIME - $START_TIME))  &>>$LOG_FILE
+TOTAL_TIME=$(( $END_TIME - $START_TIME)) 
 
 echo -e "Script excution completed successfully, $Y time taken : $TOTAL_TIME $N" | tee -a $LOG_FILE
