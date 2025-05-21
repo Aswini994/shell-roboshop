@@ -78,4 +78,10 @@ cp $SCRIPT_DIR/mongo.repo /etc/yum.repos.d/mongo.repo
 dnf install mongodb-mongosh -y &>>$LOG_FILE
 VALIDATE $? "Installing Mongodb Client"
 
+STATUS=$(mongosh --host mongodb.tejaswini.site --eval 'db.getMongo().getDBNames().indexOf("catalogue")')
+if [ $STATUS -lt 0 ]
+then
 mongosh --host mongodb.tejaswini.site </app/db/master-data.js &>>$LOG_FILE
+else
+    echo -e "Data is already loaded ... $Y SKIPPING $N"
+fi
