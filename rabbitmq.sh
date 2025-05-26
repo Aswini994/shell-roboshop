@@ -23,6 +23,7 @@ else
     echo "You are running with root access" | tee -a $LOG_FILE
 fi
 
+#password roboshop123
 echo "Please enter rabbitmq password to setup"
 read -s RABBITMQ_PASSWD
 
